@@ -32,8 +32,8 @@ This Project is allows for binds to change dynamically, In this examples it make
 
 NOTE:
 
-- You can change the `F4` and `F7` to any button you want for your binds.
-- `Developer 1` shows the console output in the top left corner of your screen.
+- You can change the `F4` and `F7` buttons for your binds.
+- `Developer 1` shows the console output in the top left corner of your screen. (Optional)
 
 ### Setup
 
@@ -43,7 +43,7 @@ NOTE:
     username = "your name"
     log_file = "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/console_chatlog.txt"
     deathMsg = "Nice"
-    KillMsg = "You are now dead"
+    killMsg = "You are now dead"
     ```
     
 NOTE:
