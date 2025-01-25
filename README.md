@@ -28,11 +28,12 @@ This Project is allows for binds to change dynamically, In this examples it make
     bind F7 exec DynamicKill.cfg
     ``` 
 
-4. Create an `DynamicDeath.cfg` and `DynamicKill,cfg` file in your TF2 game directory (C:\Program Files (x86)\Steam\steamapps\common\Team Fortress 2\tf\cfg) and leave it blank, as it will always be changing.
+4. Create an `DynamicDeath.cfg` and `DynamicKill.cfg` file in your TF2 game directory (C:\Program Files (x86)\Steam\steamapps\common\Team Fortress 2\tf\cfg) and leave it blank, as it will always be changing.
 
 NOTE:
 
-- You can change the `F4` and `F7` to any button you want for your binds
+- You can change the `F4` and `F7` to any button you want for your binds.
+- `Developer 1` shows the console output in the top left corner of your screen.
 
 ### Setup
 
