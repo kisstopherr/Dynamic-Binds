@@ -35,6 +35,7 @@ NOTE:
 
 - Customize the bind keys, `F4`, `F7`, `F1` to suit your preferences.
 - `Developer 1` shows the console output in the top left corner of your screen. (Optional)
+- `F1` will print your stats (K/D Ratio) in the console. (IT DOES NOT RESET AFTER PRE-GAME) 
 
 ### Setup
 
