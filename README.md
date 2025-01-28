@@ -33,7 +33,7 @@ This Project is allows for binds to change dynamically, In this example it makes
 
 NOTE:
 
-- You can change the `F4`, `F7` and `F1` buttons for your liking.
+- Customize the bind keys, `F4`, `F7`, `F1` to suit your preferences.
 - `Developer 1` shows the console output in the top left corner of your screen. (Optional)
 
 ### Setup
@@ -60,6 +60,31 @@ NOTE:
     python main.py
     ```
 
-2. The bot will read the chat log every second and change the binds to whom ever killed your or you killed.
+2. The bot continuously monitors the `console.txt` file for relevant events:
+    - When you kill someone, the `DynamicKill.cfg` file will be updated with your personalized `kill_Msg`.
+    - When someone kills you, the `DynamicDeath.cfg` file will be updated with your personalized `death_Msg`.
 
-3. Then you're done, leave the file running and you will get Dynamic Binds!
+3. Keep the bot running while playing Team Fortress 2 to enjoy dynamic binds!
+
+# How it works
+
+1. **Console Monitoring**:
+    - The bot reads `console.txt`, the game’s log file, every second.
+    - It extracts relevant data such as kills, deaths, and game events using regular expressions.
+
+2. **Dynamic Binds**:
+    - When you kill a player:
+        - Their username replaces `{}` in the `kill_Msg`.
+        - This message is written to `DynamicKill.cfg`.
+    - When another player kills you:
+        - Their username replaces `{}` in the `death_Msg`.
+        - This message is written to `DynamicDeath.cfg`.
+
+3. **Real-time Updates**:
+    - The bot uses `time.sleep(1)` to continuously scan for new events in the log and update the configuration files.
+
+4. **Stats Tracking**:
+    - Tracks total kills, deaths, and calculates a Kill/Death (K/D) ratio.
+    - Displays stats in the console when specific events occur (e.g., joining or leaving a server).
+
+
