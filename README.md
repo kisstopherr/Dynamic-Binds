@@ -7,6 +7,7 @@ This Project is allows for binds to change dynamically, In this example it makes
 ### Prerequisites
 
 - At least Python 3.10 installed on your system.
+- regular expressions installed.
 - Team Fortress 2 installed.
 
 ### Installation
@@ -17,8 +18,13 @@ This Project is allows for binds to change dynamically, In this example it makes
     git clone https://github.com/kisstopherr/Dynamic-Binds.git
     cd Dynamic-Binds
     ```
+2. Install regular expressions or `re`:
 
-2. Create an `autoexec.cfg` file in your TF2 game directory (C:\Program Files (x86)\Steam\steamapps\common\Team Fortress 2\tf\cfg) with the following content:
+   ```sh
+   pip install re
+   ```
+
+4. Create an `autoexec.cfg` file in your TF2 game directory (C:\Program Files (x86)\Steam\steamapps\common\Team Fortress 2\tf\cfg) with the following content:
    
     ```cfg
     developer 1
@@ -29,7 +35,7 @@ This Project is allows for binds to change dynamically, In this example it makes
     bind F1 "echo Dynamic Stats"
     ``` 
 
-4. Create an `DynamicDeath.cfg` and `DynamicKill.cfg` file in your TF2 game directory (C:\Program Files (x86)\Steam\steamapps\common\Team Fortress 2\tf\cfg) and leave it blank, as it will always be changing.
+5. Create an `DynamicDeath.cfg` and `DynamicKill.cfg` file in your TF2 game directory (C:\Program Files (x86)\Steam\steamapps\common\Team Fortress 2\tf\cfg) and leave it blank, as it will always be changing.
 
 NOTE:
 
@@ -50,7 +56,7 @@ NOTE:
     
 NOTE:
 
-- The players name will replace the "{}" in your messages.
+- The players name will replace the `{}` in your messages.
 
 
 ## Usage
