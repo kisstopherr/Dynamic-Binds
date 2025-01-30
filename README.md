@@ -49,7 +49,7 @@ NOTE:
 
     ```python
     username = "kisstopherr"
-    kill_Msg = "You are dead {}" #  The "{}" are were the username is going to be printed
+    kill_Msg = "You are dead {}" #  The "{}" are where the username is going to be printed
     death_Msg = "nice {}"
     tf2Path = "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf"
     ```
