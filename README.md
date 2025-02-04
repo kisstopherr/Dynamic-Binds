@@ -1,6 +1,6 @@
 # Dynamic Binds for Team Fortress 2
 
-This Project is allows for binds to change dynamically, In this example it makes two binds, 1 for when you die and 1 for when you kill somone. 
+This Project allows for binds to change dynamically, In this example it makes two binds, 1 for when you die and 1 for when you kill somone. 
 
 ## Setup
 
@@ -27,7 +27,6 @@ This Project is allows for binds to change dynamically, In this example it makes
 4. Create an `autoexec.cfg` file in your TF2 game directory (C:\Program Files (x86)\Steam\steamapps\common\Team Fortress 2\tf\cfg) with the following content:
    
     ```cfg
-    developer 1
     con_logfile console.txt
     con_timestamp 0
     bind F4 "exec DynamicDeath.cfg"
@@ -40,7 +39,6 @@ This Project is allows for binds to change dynamically, In this example it makes
 NOTE:
 
 - Customize the bind keys, `F4`, `F7`, `F1` to suit your preferences.
-- `Developer 1` shows the console output in the top left corner of your screen. (Optional)
 - `F1` will print your stats (K/D Ratio) in the console. (IT DOES NOT RESET AFTER PRE-GAME) 
 
 ### Setup
@@ -48,7 +46,7 @@ NOTE:
 - Edit the `main.py` file, and to set the `username`, `tf2Path`, `kill_Msg`, and `death_Msg` variables as needed.
 
     ```python
-    username = "kisstopherr"
+    username = "YOUR USERNAME"
     kill_Msg = "You are dead {}" #  The "{}" are were the username is going to be printed
     death_Msg = "nice {}"
     tf2Path = "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf"
