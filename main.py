@@ -1,30 +1,66 @@
 import re
 import time
 import os
-
+import json
 
 username = ""
-kill_Msg = "You are dead {}" #  The "{}" are were the username is going to be printed
-death_Msg = "nice {}"
-tf2Path = "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf"
+kill_Msg = ""
+death_Msg = ""
+tf2Path = ""
+currentClass = ""
+ignoreClass = False
 
+classKillMsg = {
+    "scout": "",
+    "soldier": "",
+    "pyro": "",
+    "demo": "",
+    "heavy": "",
+    "engineer": "",
+    "medic": "",
+    "sniper": "",
+    "spy": ""
+}
+
+def configStartUp():
+    global username
+    global kill_Msg
+    global death_Msg
+    global tf2Path
+    global classKillMsg
+    global ignoreClass
+    with open("./config.json", 'r') as f:
+        config = json.load(f)
+        username = config['username']
+        kill_Msg = config['general_kill_msg']
+        death_Msg = config['general_death_msg']
+        tf2Path = config['tf2_path']
+        ignoreClass = config['ignore_class']        
+        if config['ignore_class'] == False:
+            for cls in classKillMsg:
+                key = f"{cls}_kill_msg"
+                classKillMsg[cls] = config["class_Kill_msgs"].get(key, "")
+        else:
+            print("Ignore Class is True; Using General Messages.")
+configStartUp()
+
+def updateKillMsg(playerClass):
+    global kill_Msg
+    kill_Msg = classKillMsg[playerClass.lower()]
 
 #   Files Paths
 consoleOutputPath = f"{tf2Path}/console.txt"
-DynamicKillCfgPath = f"{tf2Path}/cfg/DynamicKill.cfg"
-DynamicDeathCfgPath = f"{tf2Path}/cfg/DynamicDeath.cfg"
-
+dynamicKillCfgPath = f"{tf2Path}/cfg/DynamicKill.cfg"
+dynamicDeathCfgPath = f"{tf2Path}/cfg/DynamicDeath.cfg"
 lastkilled = ""
 outputLines = []
 kills = []
-
 #   Stats
 total_Kills = 0
 total_Deaths = 0
 queued = False
 
-def extract_data(console_msg):
-
+def extractData(console_msg):
     global lastkilled
     global total_Deaths
     global total_Kills
@@ -32,10 +68,11 @@ def extract_data(console_msg):
     global outputLines
     global lastkilled
     global queued
+    global ignoreClass
 
 #   Commands
     if f"{username} connected" in console_msg:
-        print("\n--Resetting; New Server Joined\n")
+        print("\n--Resetting; New Server Joined.\n")
         total_Deaths = 0
         total_Kills = 0
         kills.clear()
@@ -43,7 +80,7 @@ def extract_data(console_msg):
         lastkilled = ""
 
     if "Removed from match by system" in console_msg:
-        print("\n--Leaving Server; Printing Stats:")
+        print("\n--Leaving Server; Stats:")
         kd_ratio = total_Kills / total_Deaths if total_Deaths != 0 else total_Kills
         print(f"\nTotal Kills: {total_Kills}\nTotal Deaths: {total_Deaths}\nKD = {kd_ratio}")
         total_Deaths = 0
@@ -52,18 +89,23 @@ def extract_data(console_msg):
         outputLines.clear()
         lastkilled = ""
 
-
+#   Dyamic Echo Cfg
     if "Dynamic Stats" in console_msg:
         kd_ratio = total_Kills / total_Deaths if total_Deaths != 0 else total_Kills
         print(f"\nTotal Kills: {total_Kills}\nTotal Deaths: {total_Deaths}\nKD = {kd_ratio}")
-    
+
+    if "Dynamic" in console_msg and (console_msg.split()[1] != "Stats"):
+        print(f'You are now {console_msg.split()[1]}, Updating bind.')
+        if ignoreClass != True:
+            updateKillMsg(console_msg.split()[1])
+
+
     if "[PartyClient] Entering queue" in console_msg:
         print("\n--Entering Queue For New Server.")
         queued = True
     if "[PartyClient] Leaving queue" in console_msg:
         print("\n--Leaving Queue For New Server.")
         queued = False
-
 
 
 #   Kill & Death Binds
@@ -82,12 +124,8 @@ def extract_data(console_msg):
     else:
         return "Wrong format."
 
-
-
 if __name__ == "__main__":
-
     last_modified_time = 0
-
     while True:
         try:
 #             Check if the file has been modified
@@ -103,7 +141,7 @@ if __name__ == "__main__":
 
 #                 Process all new lines
                 for line in outputLines:
-                    result = extract_data(line)
+                    result = extractData(line)
                     if isinstance(result, tuple) and result[1] != username:
                         if str(result) not in kills:
                             print(f"You Killed {lastkilled}")
@@ -111,7 +149,7 @@ if __name__ == "__main__":
                             lastkilled = result
                             total_Kills += 1
 
-                            with open(DynamicKillCfgPath, 'w', encoding='utf-8', errors="ignore") as file:
+                            with open(dynamicKillCfgPath, 'w', encoding='utf-8', errors="ignore") as file:
                                 file.write(f'say "{kill_Msg.format(str(result[1]))}"')
 #                               print(f'say "{kill_Msg.format(str(result[1]))}")')
 
@@ -119,7 +157,7 @@ if __name__ == "__main__":
                         print(f"You died by {result[0]}")
                         total_Deaths += 1
 
-                        with open(DynamicDeathCfgPath, 'w', encoding='utf-8', errors="ignore") as file:
+                        with open(dynamicDeathCfgPath, 'w', encoding='utf-8', errors="ignore") as file:
                             file.write(f'say "{death_Msg.format(str(result[0]))}"')
 #                           print(f'say "{death_Msg.format(str(result[0]))}")')
 
