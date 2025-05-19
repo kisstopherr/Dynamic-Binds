@@ -1,6 +1,6 @@
 # Dynamic Binds for Team Fortress 2
 
-This Project allows for binds to change dynamically, In this example it makes two binds, 1 for when you die and 1 for when you kill somone. 
+This Project allows for binds to change dynamically, In this example you can have 1 kill message for each class or have a general one that doesn't matter on your class. 
 
 ## Setup
 
@@ -35,6 +35,13 @@ This Project allows for binds to change dynamically, In this example it makes tw
     ``` 
 
 5. Create an `DynamicDeath.cfg` and `DynamicKill.cfg` file in your TF2 game directory (C:\Program Files (x86)\Steam\steamapps\common\Team Fortress 2\tf\cfg) and leave it blank, as it will always be changing.
+
+6. Create 9 config files with each of the classes name:
+   ```scout.cfg```
+   ```soldier.cfg```
+   ```pyro.cfg```
+   ```...```
+   ```spy.cfg```
 
 NOTE:
 
