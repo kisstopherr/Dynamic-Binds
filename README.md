@@ -46,14 +46,8 @@ NOTE:
 
 ### Setup
 
-- Edit the `main.py` file, and to set the `username`, `tf2Path`, `kill_Msg`, and `death_Msg` variables as needed.
-
-    ```python
-    username = "YOUR USERNAME"
-    kill_Msg = "You are dead {}" #  The "{}" are were the username is going to be printed
-    death_Msg = "nice {}"
-    tf2Path = "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf"
-    ```
+- Edit the `config.json` file, and to set the `username`, `tf2Path`, `death_Msg` and all of the `kill_msg` to your liking.
+- If you do not want it to change the binds for every class you can turn `ignore_class` to true.
     
 NOTE:
 
@@ -94,5 +88,3 @@ NOTE:
 4. **Stats Tracking**:
     - Tracks total kills, deaths, and calculates a Kill/Death (K/D) ratio.
     - Displays stats in the console when specific events occur (e.g., joining or leaving a server).
-
-
