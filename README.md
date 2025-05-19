@@ -36,12 +36,8 @@ This Project allows for binds to change dynamically, In this example you can hav
 
 5. Create an `DynamicDeath.cfg` and `DynamicKill.cfg` file in your TF2 game directory (C:\Program Files (x86)\Steam\steamapps\common\Team Fortress 2\tf\cfg) and leave it blank, as it will always be changing.
 
-6. Create 9 config files with each of the classes name:
-   ```scout.cfg```
-   ```soldier.cfg```
-   ```pyro.cfg```
-   ```...```
-   ```spy.cfg```
+6. Move all of the `.cfg` in the `ClassConfigs` folder into your TF2 game directory (C:\Program Files (x86)\Steam\steamapps\common\Team Fortress 2\tf\cfg).
+   
 
 NOTE:
 
