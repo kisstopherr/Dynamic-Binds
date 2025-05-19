@@ -1,0 +1,20 @@
+{
+    "username": "",
+    "tf2_path": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf",    
+
+    "general_kill_msg": "{} has died",
+    "general_death_msg": "lol {}",
+    "ignore_class": false,
+
+    "class_Kill_msgs": {
+        "scout_kill_msg": "{} died to a scout.",
+        "soldier_kill_msg": "{} died to a soldier.",
+        "pyro_kill_msg": "{} died to a pyro.",
+        "demo_kill_msg": "{} died to a demo.",
+        "heavy_kill_msg": "{} died to a heavy.",
+        "engineer_kill_msg": "{} died to a engineer.",
+        "medic_kill_msg": "{} died to a medic.",
+        "sniper_kill_msg": "{} died to a sniper.",
+        "spy_kill_msg": "{} died to a spy."
+    }
+}
